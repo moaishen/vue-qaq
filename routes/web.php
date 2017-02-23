@@ -23,6 +23,15 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('logout', ['uses' => 'UserController@logout']);
 });
 
+Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
+    Route::get('/test', function () {
+        dd(config('website.questions.limit'));
+    });
+    Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
+});
+
 Route::get('/test', function () {
     dd(config('website.questions.limit'));
 })->middleware(Login::class);
+
+Route::get('/test1', 'QuestionController@test');
