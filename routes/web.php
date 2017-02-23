@@ -10,15 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Middleware\Test;
-use App\Utils\Utils;
-
+use App\Http\Middleware\Login;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-   return Utils::err('test');
-})->middleware(Test::class);
+Route::group(['prefix' => 'api'], function () {
+    Route::get('register', ['uses' => 'UserController@register']);
+    Route::get('login', ['uses' => 'UserController@login']);
+    Route::get('islogin', ['uses' => 'UserController@is_login']);
+    Route::get('logout', ['uses' => 'UserController@logout']);
+});
 
+Route::get('/test', function () {
+    dd('success');
+})->middleware(Login::class);

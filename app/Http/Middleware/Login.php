@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Utils\Utils;
 
-class Test
+class Login
 {
     /**
      * Handle an incoming request.
@@ -15,8 +16,8 @@ class Test
      */
     public function handle($request, Closure $next)
     {
-        if ($request->input('n') > 1) {
-            return response([2, 4, 5]);
+        if (!session('user_id')) {
+            return response(Utils::err('login required!'));
         }
         return $next($request);
     }

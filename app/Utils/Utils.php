@@ -31,5 +31,4 @@ class Utils
     {
         return ['status' => $status, 'msg' => $msg];
     }
-
 }
