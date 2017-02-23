@@ -57,4 +57,11 @@ class UserController extends Controller
         $request->session()->forget('user_id');
         return Utils::suc('logout success!');
     }
+
+    public function questions($id)
+    {
+        $user = User::find($id);
+        $questions = $user->questions()->orderBy('created_at', 'desc')->get();
+        return $questions;
+    }
 }

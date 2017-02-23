@@ -28,6 +28,8 @@ Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
         dd(config('website.questions.limit'));
     });
     Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
+    Route::get('/question/{id}', ['uses' => 'QuestionController@getById']);
+    Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
 });
 
 Route::get('/test', function () {
