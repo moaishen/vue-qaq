@@ -6,16 +6,18 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Utils\Utils;
 use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class UserController extends Controller
 {
     public function register(Request $request)
     {
-        if (!$request->has('name') || !$request->has('password')){
-            return Utils::err('username and password are required!');
-        }
-        if (User::where('name', $request->name)->first()) {
-            return Utils::err('username was used!');
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users|max:20',
+            'password' => 'required|min:6'
+        ]);
+        if ($validator->fails()) {
+            return Utils::err($validator->errors()->first());
         }
         $user = new User();
         $user->name = $request->name;
@@ -28,8 +30,12 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        if (!$request->has('name') || !$request->has('password')) {
-            return Utils::err('username and password are required!');
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'password' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return Utils::err($validator->errors()->first());
         }
         if (!$user = User::where('name', $request->name)->first()) {
             return Utils::err('username not found, register first?');

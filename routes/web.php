@@ -24,5 +24,5 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 Route::get('/test', function () {
-    dd('success');
+    dd(config('website.questions.limit'));
 })->middleware(Login::class);
