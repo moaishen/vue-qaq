@@ -30,6 +30,7 @@ Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
     Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
     Route::get('/question/{id}', ['uses' => 'QuestionController@getById']);
     Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
+    Route::post('/question', ['uses' => 'QuestionController@add']);
 });
 
 Route::get('/test', function () {

@@ -31,4 +31,9 @@ class Utils
     {
         return ['status' => $status, 'msg' => $msg];
     }
+
+    public static function userId()
+    {
+        return session('user_id');
+    }
 }

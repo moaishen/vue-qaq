@@ -17,7 +17,7 @@ class Login
     public function handle($request, Closure $next)
     {
         if (!session('user_id')) {
-//            return response(Utils::err('login required!'));
+            return response(Utils::err('login required!'));
         }
         return $next($request);
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Utils\Utils;
 use Illuminate\Http\Request;
 use App\Question;
+use Validator;
 
 class QuestionController extends Controller
 {
@@ -27,18 +28,16 @@ class QuestionController extends Controller
     public function add(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:users|max:20',
-            'password' => 'required|min:6'
+            'title' => 'required|max:200'
         ]);
         if ($validator->fails()) {
             return Utils::err($validator->errors()->first());
         }
 
-    }
-
-    public function test()
-    {
-        $question = Question::find(1);
-        return $question->author;
+        $question = Question::create(array_add($request->all(), 'user_id', Utils::userId()));
+        if ($question->save()){
+            return Utils::suc('add success!');
+        }
+        return Utils::err('add question failed!');
     }
 }
