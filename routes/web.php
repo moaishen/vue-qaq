@@ -33,6 +33,12 @@ Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
     Route::post('/question', ['uses' => 'QuestionController@add']);
 });
 
+Route::group(['prefix' => 'app'], function () {
+    Route::get('/{vue_capture?}', function () {
+        return view('vue');
+    })->where('vue_capture', '[\/\w\.-]*');
+});
+
 Route::get('/test', function () {
     dd(config('website.questions.limit'));
 })->middleware(Login::class);
