@@ -1,7 +1,15 @@
 <template>
-    <div id="app" class="container">
-        <navbar></navbar>
-        <router-view></router-view>
+    <div id="app">
+        <md-layout md-gutter>
+            <md-layout ></md-layout>
+            <md-layout md-flex-xsmall="100" md-flex-small="100" md-flex-medium="80" md-flex-large="80">
+                <navbar></navbar>
+                <transition name="md-router" appear>
+                    <router-view class="main-container"></router-view>
+                </transition>
+            </md-layout>
+            <md-layout></md-layout>
+        </md-layout>
     </div>
 </template>
 
@@ -14,30 +22,38 @@
         },
         created () {
             console.log(1)
+        },
+        methods: {
+            toggleLeftSidenav() {
+                this.$refs.leftSidenav.toggle();
+            },
+            toggleRightSidenav() {
+                this.$refs.rightSidenav.toggle();
+            },
+            closeRightSidenav() {
+                this.$refs.rightSidenav.close();
+            },
+            open(ref) {
+                console.log('Opened: ' + ref);
+            },
+            close(ref) {
+                console.log('Closed: ' + ref);
+            }
         }
     }
 </script>
 
-<style>
-    .container {
-        margin-right: auto;
-        margin-left: auto;
+<style lang="scss">
+    .main-container {
+        display: flex;
+        flex: 1;
+        min-height: 450px;
+        width: 100%;
+        border: 1px solid red;
         padding-left: 15px;
         padding-right: 15px;
-    }
-    @media (min-width: 768px) {
-        .container {
-            width: 750px;
-        }
-    }
-    @media (min-width: 992px) {
-        .container {
-            width: 970px;
-        }
-    }
-    @media (min-width: 1200px) {
-        .container {
-            width: 1170px;
+        @media (min-width: 768px) {
+            min-height: 850px;
         }
     }
 </style>

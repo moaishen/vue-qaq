@@ -1,22 +1,16 @@
 <template>
-    <md-tabs>
-        <md-tab id="movies" md-label="Movies">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
-        </md-tab>
+    <div id="navbar">
+        <md-toolbar md-theme="blue">
+            <md-button class="md-icon-button">
+                <md-icon>menu</md-icon>
+            </md-button>
 
-        <md-tab id="music" md-label="Music">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
-        </md-tab>
+            <h2 class="md-title" style="flex: 1">Vue QAQ</h2>
 
-        <md-tab id="books" md-label="Books">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
-        </md-tab>
-
-        <md-tab id="pictures" md-label="Pictures" md-tooltip="This is the pictures tab!">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
-        </md-tab>
-    </md-tabs>
+            <md-button class="md-raised">Add</md-button>
+            <md-button class="md-raised md-warn">Remove</md-button>
+        </md-toolbar>
+    </div>
 </template>
 
 <script>
@@ -24,3 +18,9 @@
         name: 'navbar'
     }
 </script>
+
+<style lang="scss">
+    #navbar {
+        width: 100%;
+    }
+</style>

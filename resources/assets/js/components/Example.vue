@@ -8,6 +8,7 @@
                     <div class="panel-body">
                         I'm an example component!
                     </div>
+                    <router-link to="login">login</router-link>
                 </div>
             </div>
         </div>

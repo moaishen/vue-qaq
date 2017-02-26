@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Example from '../components/Example.vue'
+import Login from '../components/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ export default new VueRouter({
             path: '/',
             name: 'Example',
             component: Example
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
         }
     ]
 })
