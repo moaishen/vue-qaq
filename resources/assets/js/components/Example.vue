@@ -9,6 +9,7 @@
                         I'm an example component!
                     </div>
                     <router-link to="login">login</router-link>
+                    <router-link to="index">index</router-link>
                 </div>
             </div>
         </div>

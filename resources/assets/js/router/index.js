@@ -5,6 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Example from '../components/Example.vue'
 import Login from '../components/Login.vue'
+import Index from '../components/Index.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ export default new VueRouter({
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '/index',
+            name: 'Index',
+            component: Index
         }
     ]
 })
