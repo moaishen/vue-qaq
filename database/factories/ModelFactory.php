@@ -31,3 +31,12 @@ $factory->define(App\Question::class, function (Faker\Generator $faker) {
         'description' => $faker->realText(200, 2)
     ];
 });
+
+$factory->define(App\Answer::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => $faker->numberBetween(1, 10),
+        'question_id' => $faker->numberBetween(1, 50),
+        'content' => $faker->realText(200, 1)
+    ];
+});
