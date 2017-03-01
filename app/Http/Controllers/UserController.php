@@ -64,4 +64,11 @@ class UserController extends Controller
         $questions = $user->questions()->orderBy('created_at', 'desc')->get();
         return $questions;
     }
+
+    public function answers($id)
+    {
+        $user = User::find($id);
+        $answers = $user->answers()->orderBy('created_at', 'desc')->get();
+        return $answers;
+    }
 }

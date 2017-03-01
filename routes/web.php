@@ -21,6 +21,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('login', ['uses' => 'UserController@login']);
     Route::get('islogin', ['uses' => 'UserController@is_login']);
     Route::get('logout', ['uses' => 'UserController@logout']);
+    Route::get('/answers/{id}', ['uses' => 'QuestionController@getAnswers']);
+    Route::get('/useranswers/{id}', ['uses' => 'UserController@answers']);
 });
 
 Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
@@ -28,7 +30,6 @@ Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
         dd(config('website.questions.limit'));
     });
     Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
-    Route::get('/answers/{id}', ['uses' => 'QuestionController@getAnswers']);
     Route::get('/question/{id}', ['uses' => 'QuestionController@getById']);
     Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
     Route::post('/question', ['uses' => 'QuestionController@add']);

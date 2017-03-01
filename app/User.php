@@ -13,6 +13,11 @@ class User extends Model
 
     public function questions()
     {
-        return $this->hasMany('App\question', 'user_id');
+        return $this->hasMany('App\Question', 'user_id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer', 'user_id');
     }
 }
