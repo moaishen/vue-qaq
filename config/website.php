@@ -5,6 +5,9 @@ return [
         'name' => 'vue-qaq'
     ],
     'questions' => [
-        'limit' => 7
+        'limit' => 6
+    ],
+    'answers' => [
+        'limit' => 6
     ]
 ];

@@ -8,7 +8,12 @@ class Question extends Model
 {
     protected  $fillable = ['title', 'description', 'user_id'];
 
-    public function author() {
+    public function author()
+    {
         return $this->belongsTo('App\User', 'user_id')->select(['name', 'id']);
+    }
+    public function answers()
+    {
+        return $this->hasMany('App\Answer', 'question_id');
     }
 }

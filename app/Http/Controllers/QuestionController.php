@@ -16,6 +16,13 @@ class QuestionController extends Controller
         return $questions;
     }
 
+    public function getAnswers($id)
+    {
+        $question = Question::find($id);
+        $answers = $question->answers()->orderBy('created_at', 'desc')->get();
+        return $answers;
+    }
+
     public function getById($id)
     {
         $question = Question::with('author')->find($id);

@@ -28,6 +28,7 @@ Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
         dd(config('website.questions.limit'));
     });
     Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
+    Route::get('/answers/{id}', ['uses' => 'QuestionController@getAnswers']);
     Route::get('/question/{id}', ['uses' => 'QuestionController@getById']);
     Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
     Route::post('/question', ['uses' => 'QuestionController@add']);
