@@ -45,7 +45,6 @@
                 this.prev_page_url = data.data.prev_page_url
                 this.next_page_url = data.data.next_page_url
                 this.is_loading = false
-                console.log(this.questions, data.data, this.prev_page_url, this.next_page_url)
             },
             async _getData(url) {
                 this.is_loading = true

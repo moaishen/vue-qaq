@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Utils\Utils;
 use Illuminate\Http\Request;
 use App\Question;
+use App\Answer;
 use Validator;
 
 class QuestionController extends Controller
@@ -26,6 +27,7 @@ class QuestionController extends Controller
     public function getById($id)
     {
         $question = Question::with('author')->find($id);
+        $question->answers = Answer::where('question_id', $id)->with('author')->orderBy('updated_at', 'desc')->get();
         if ($question) {
             return $question;
         }

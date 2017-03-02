@@ -10960,7 +10960,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.prev_page_url = data.data.prev_page_url;
             this.next_page_url = data.data.next_page_url;
             this.is_loading = false;
-            console.log(this.questions, data.data, this.prev_page_url, this.next_page_url);
         },
         _getData: async function _getData(url) {
             this.is_loading = true;
@@ -11123,9 +11122,12 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Index_vue__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Detail_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Detail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Detail_vue__);
 /**
  * Created by zcong on 2017/2/26.
  */
+
 
 
 
@@ -11139,16 +11141,20 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
     mode: 'history',
     routes: [{
         path: '/',
-        name: 'Example',
+        name: 'example',
         component: __WEBPACK_IMPORTED_MODULE_2__components_Example_vue___default.a
     }, {
         path: '/login',
-        name: 'Login',
+        name: 'login',
         component: __WEBPACK_IMPORTED_MODULE_3__components_Login_vue___default.a
     }, {
         path: '/index',
-        name: 'Index',
+        name: 'index',
         component: __WEBPACK_IMPORTED_MODULE_4__components_Index_vue___default.a
+    }, {
+        path: '/detail/:id',
+        name: 'detail',
+        component: __WEBPACK_IMPORTED_MODULE_5__components_Detail_vue___default.a
     }]
 });
 
@@ -31461,6 +31467,191 @@ module.exports = function(module) {
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 67 */,
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    name: 'detail',
+    data: function data() {
+        return {
+            question: {},
+            id: this.$route.params.id,
+            author: {}
+        };
+    },
+    watch: function watch() {
+        $route: 'getData';
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: async function getData() {
+            this.is_loading = true;
+            var data = await axios.get('/api/question/' + this.id);
+            this.question = data.data;
+            this.author = data.data.author;
+            console.log(this.question.author.name);
+        }
+    }
+};
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+exports.push([module.i, "\n#detail {\n    min-height: 800px;\n    border: 1px solid green;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.question-card {\n    max-height: 220px;\n    margin-top: 10px;\n}\n.question-content {\n    margin-top: 20px;\n}\n.page {\n    margin-top: 20px;\n    max-height: 48px;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n", ""]);
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(72)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(68),
+  /* template */
+  __webpack_require__(71),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/zcong/zcong/github/vue-qaq/resources/assets/js/components/Detail.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Detail.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7265dada", Component.options)
+  } else {
+    hotAPI.reload("data-v-7265dada", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "detail"
+    }
+  }, [_c('md-layout', {
+    attrs: {
+      "md-gutter": ""
+    }
+  }, [_c('md-layout', {
+    attrs: {
+      "md-flex": "80",
+      "md-flex-offset": "10"
+    }
+  }, [_c('md-card', {
+    staticClass: "question-card",
+    attrs: {
+      "md-with-hover": ""
+    }
+  }, [_c('md-card-header', [_c('div', {
+    staticClass: "md-title"
+  }, [_vm._v(_vm._s(_vm.question.title))]), _vm._v(" "), _c('div', {
+    staticClass: "md-subhead"
+  }, [_vm._v(_vm._s(_vm.author.name))])]), _vm._v(" "), _c('md-card-content', [_vm._v("\n                    " + _vm._s(_vm.question.description) + "\n                ")]), _vm._v(" "), _c('md-card-actions', [_c('md-button', [_vm._v("Action")]), _vm._v(" "), _c('md-button', [_vm._v("Action")])], 1)], 1), _vm._v(" "), _vm._l((_vm.question.answers), function(answer) {
+    return _c('md-card', {
+      staticClass: "answer-card",
+      attrs: {
+        "md-with-hover": ""
+      }
+    }, [_c('md-card-header', [_c('div', {
+      staticClass: "md-title"
+    }, [_vm._v(_vm._s(answer.author.name))])]), _vm._v(" "), _c('md-card-content', [_vm._v("\n                    " + _vm._s(answer.content) + "\n                ")])], 1)
+  })], 2)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7265dada", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(69);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("25f5da4c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7265dada!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Detail.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7265dada!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Detail.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
