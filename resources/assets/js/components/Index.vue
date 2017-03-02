@@ -12,6 +12,10 @@
                     </md-card-content>
                 </md-card>
             </md-layout>
+            <div class="page">
+                <md-button class="md-raised md-primary" :disabled="is_loading || !prev_page_url" @click.native="_getPre">prev</md-button>
+                <md-button class="md-raised md-primary" :disabled="is_loading || !next_page_url" @click.native="getNext">next</md-button>
+            </div>
         </md-layout>
     </div>
 </template>
@@ -22,8 +26,9 @@
         data () {
             return {
                 questions: [],
-                pre_page_url: '',
-                next_page_url: ''
+                prev_page_url: '',
+                next_page_url: '',
+                is_loading: false
             }
         },
         watch () {
@@ -34,9 +39,28 @@
         },
         methods: {
             async getData() {
+                this.is_loading = true
                 const data = await axios.get('/api/questions')
                 this.questions = data.data.data
-                console.log(this.questions)
+                this.prev_page_url = data.data.prev_page_url
+                this.next_page_url = data.data.next_page_url
+                this.is_loading = false
+                console.log(this.questions, data.data, this.prev_page_url, this.next_page_url)
+            },
+            async _getData(url) {
+                this.is_loading = true
+                const data = await axios.get(url)
+                this.questions = data.data.data
+                this.prev_page_url = data.data.prev_page_url
+                this.next_page_url = data.data.next_page_url
+                this.is_loading = false
+            },
+            _getPre () {
+                this._getData(this.prev_page_url)
+            },
+            getNext () {
+                console.log(1)
+                this._getData(this.next_page_url)
             }
         }
     }
@@ -54,5 +78,12 @@
     }
     .question-content {
         margin-top: 20px;
+    }
+    .page {
+        margin-top: 20px;
+        max-height: 48px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
     }
 </style>
