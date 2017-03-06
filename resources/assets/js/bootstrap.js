@@ -27,7 +27,7 @@ window.Vue = require('vue');
 
 window.axios = require('axios');
 
-require('vue-material/dist/vue-material.css');
+require('element-ui/lib/theme-default/index.css');
 
 window.axios.defaults.headers.common = {
     'X-CSRF-TOKEN': '',
