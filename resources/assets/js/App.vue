@@ -3,8 +3,8 @@
         <el-menu theme="dark" :default-active="active" class="el-menu" mode="horizontal" router>
             <el-menu-item index="1" class="logo">处理中心</el-menu-item>
             <div class="menu-items">
-                <el-menu-item index="2" class="menu-item" :route="home">home</el-menu-item>
-                <el-menu-item index="3" class="menu-item" :route="login">index</el-menu-item>
+                <el-menu-item index="2" class="menu-item" :route="index">index</el-menu-item>
+                <el-menu-item index="3" class="menu-item" :route="login">login</el-menu-item>
             </div>
         </el-menu>
         <el-row justify="center" type="flex">
