@@ -7,7 +7,7 @@
                 <el-menu-item index="3" class="menu-item" :route="login">login</el-menu-item>
             </div>
         </el-menu>
-        <el-row justify="center" type="flex">
+        <el-row justify="center" type="flex" class="main">
             <el-col :xs="24" :sm="20" :md="20" :lg="18"><div class="grid-content bg-purple">
                 <router-view></router-view>
             </div></el-col>
@@ -35,7 +35,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     @media (min-width: 768px) {
         .logo {
             margin-left: 10%!important;
@@ -44,14 +44,12 @@
             float: right!important;
             margin-right: 10%!important;
         }
+        .grid-content {
+            border-radius: 4px;
+            padding-top: 30px;
+        }
     }
-    .bg-purple {
-        background: #d3dce6;
-    }
-    .grid-content {
-        border-radius: 4px;
-        min-height: 36px;
-        padding-top: 30px;
-        min-height: 900px;
+    html, body, #app, .main, .grid-content {
+        height: 100%;
     }
 </style>

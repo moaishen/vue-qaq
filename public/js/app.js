@@ -14999,6 +14999,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'index',
@@ -15007,7 +15012,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             questions: [],
             data: {},
             currentPage: 1,
-            pageSize: 7,
+            pageSize: 5,
             total: 100
         };
     },
@@ -15022,6 +15027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             console.log(res.data);
+            this.questions = res.data.data;
             this.currentPage = res.data.current_page;
             this.pageSize = res.data.per_page;
             this.total = res.data.total;
@@ -15224,7 +15230,7 @@ exports.push([module.i, "@charset \"UTF-8\";.el-breadcrumb:after,.el-breadcrumb:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
-exports.push([module.i, "\n.test[data-v-2e8cc600] {\n    height: 20px;\n    border: 1px solid red;\n}\n", ""]);
+exports.push([module.i, "\n.test[data-v-2e8cc600] {\n    height: 20px;\n    border: 1px solid red;\n    text-align: center;\n}\n#index[data-v-2e8cc600], .content[data-v-2e8cc600] {\n    min-height: 100%;\n}\n.pagination[data-v-2e8cc600] {\n    position: relative;\n    bottom: 0;\n    text-align: center;\n}\n", ""]);
 
 /***/ }),
 /* 84 */
@@ -15238,7 +15244,7 @@ exports.push([module.i, "\n.login-form[data-v-9b3d7fd2] {\n    display: block;\n
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
-exports.push([module.i, "\n@media (min-width: 768px) {\n.logo[data-v-e000e56c] {\n        margin-left: 10%!important;\n}\n.menu-items[data-v-e000e56c] {\n        float: right!important;\n        margin-right: 10%!important;\n}\n}\n.bg-purple[data-v-e000e56c] {\n    background: #d3dce6;\n}\n.grid-content[data-v-e000e56c] {\n    border-radius: 4px;\n    min-height: 36px;\n    padding-top: 30px;\n    min-height: 900px;\n}\n", ""]);
+exports.push([module.i, "\n@media (min-width: 768px) {\n.logo {\n        margin-left: 10%!important;\n}\n.menu-items {\n        float: right!important;\n        margin-right: 10%!important;\n}\n.grid-content {\n        border-radius: 4px;\n        padding-top: 30px;\n}\n}\nhtml, body, #app, .main, .grid-content {\n    height: 100%;\n}\n", ""]);
 
 /***/ }),
 /* 86 */
@@ -64380,7 +64386,7 @@ var Component = __webpack_require__(10)(
   /* template */
   __webpack_require__(116),
   /* scopeId */
-  "data-v-e000e56c",
+  null,
   /* cssModules */
   null
 )
@@ -64542,31 +64548,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "index"
     }
-  }, [_c('el-row', {
-    attrs: {
-      "type": "flex"
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 24
-    }
   }, [_c('div', {
-    staticClass: "test"
-  }, [_vm._v("xsnjxnsj")]), _vm._v(" "), _c('div', {
-    staticClass: "block"
-  }, [_c('span', {
-    staticClass: "demonstration"
-  }, [_vm._v("显示总数")]), _vm._v(" "), _c('el-pagination', {
+    staticClass: "content"
+  }, _vm._l((_vm.questions), function(question, index) {
+    return _c('el-row', {
+      key: index,
+      attrs: {
+        "type": "flex",
+        "justify": "center"
+      }
+    }, [_c('el-col', {
+      attrs: {
+        "span": 20
+      }
+    }, [_c('h3', [_vm._v(_vm._s(question.title))]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(question.author.name) + " published at " + _vm._s(question.created_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(question.description))])])], 1)
+  })), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    staticClass: "center",
     attrs: {
+      "small": "",
       "current-page": _vm.currentPage,
       "page-size": _vm.pageSize,
-      "layout": "total, prev, pager, next",
+      "layout": "prev, pager, next",
       "total": _vm.total
     },
     on: {
       "current-change": _vm.handleCurrentChange
     }
-  })], 1)])], 1)], 1)
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -64721,6 +64731,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "route": _vm.login
     }
   }, [_vm._v("login")])], 1)], 1), _vm._v(" "), _c('el-row', {
+    staticClass: "main",
     attrs: {
       "justify": "center",
       "type": "flex"
@@ -67093,13 +67104,13 @@ var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(19)("1293a352", content, false);
+var update = __webpack_require__(19)("3f0e4206", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e000e56c&scoped=true!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e000e56c&scoped=true!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e000e56c!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e000e56c!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });

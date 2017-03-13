@@ -1,20 +1,25 @@
 <template>
     <div id="index">
-        <el-row type="flex">
-            <el-col :span="24">
-                <div class="test">xsnjxnsj</div>
-                <div class="block">
-                    <span class="demonstration">显示总数</span>
-                    <el-pagination
-                            @current-change="handleCurrentChange"
-                            :current-page="currentPage"
-                            :page-size="pageSize"
-                            layout="total, prev, pager, next"
-                            :total="total">
-                    </el-pagination>
-                </div>
-            </el-col>
-        </el-row>
+        <div class="content">
+            <el-row type="flex" justify="center" v-for="(question, index) in questions" :key="index">
+                <el-col :span="20">
+                    <h3>{{ question.title }}</h3>
+                    <h4>{{ question.author.name }} published at {{ question.created_at }}</h4>
+                    <p>{{ question.description }}</p>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="pagination">
+            <el-pagination
+                    small
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage"
+                    :page-size="pageSize"
+                    layout="prev, pager, next"
+                    :total="total"
+                    class="center">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -26,7 +31,7 @@
                 questions: [],
                 data: {},
                 currentPage: 1,
-                pageSize: 7,
+                pageSize: 5,
                 total: 100
             }
         },
@@ -38,6 +43,7 @@
                    }
                })
                 console.log(res.data)
+                this.questions = res.data.data
                 this.currentPage = res.data.current_page
                 this.pageSize = res.data.per_page
                 this.total = res.data.total
@@ -56,5 +62,14 @@
     .test {
         height: 20px;
         border: 1px solid red;
+        text-align: center;
+    }
+    #index, .content {
+        min-height: 100%;
+    }
+    .pagination {
+        position: relative;
+        bottom: 0;
+        text-align: center;
     }
 </style>
