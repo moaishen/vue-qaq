@@ -8,7 +8,8 @@
             <el-card class="box-card" v-if="questions.length !== 0">
                 <div v-for="(question, index) in questions" class="text item" :key="'question' + index">
                     <div class="question" @click="handleQuestionClick(question.id)">
-                        <h4>{{ question.title }} published at {{ question.updated_at}}</h4>
+                        <h4>published at {{ question.updated_at}}</h4>
+                        <h4>{{ question.title }}</h4>
                         <p>{{ question.description }}</p>
                     </div>
                 </div>

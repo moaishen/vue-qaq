@@ -67407,6 +67407,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'user',
@@ -67474,7 +67475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 130 */
@@ -67536,7 +67537,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.handleQuestionClick(question.id)
         }
       }
-    }, [_c('h4', [_vm._v(_vm._s(question.title) + " published at " + _vm._s(question.updated_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(question.description))])])])
+    }, [_c('h4', [_vm._v("published at " + _vm._s(question.updated_at))]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(question.title))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(question.description))])])])
   })) : _c('p', [_vm._v("No questions here!")]), _vm._v(" "), _c('h2', [_vm._v("Answers:")]), _vm._v(" "), (_vm.answers.length !== 0) ? _c('el-card', {
     staticClass: "box-card"
   }, _vm._l((_vm.answers), function(answer, index) {
