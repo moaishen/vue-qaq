@@ -15199,9 +15199,12 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Question_vue__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Question_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Question_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_vue__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_User_vue__);
 /**
  * Created by zcong on 2017/2/26.
  */
+
 
 
 
@@ -15230,6 +15233,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         path: '/question/:id',
         name: 'question',
         component: __WEBPACK_IMPORTED_MODULE_5__components_Question_vue___default.a
+    }, {
+        path: '/user/:id',
+        name: 'user',
+        component: __WEBPACK_IMPORTED_MODULE_6__components_User_vue___default.a
     }]
 });
 
@@ -64577,13 +64584,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "span": 20
       }
     }, [_c('div', {
-      staticClass: "question",
+      staticClass: "question"
+    }, [_c('h3', [_vm._v(_vm._s(question.title))]), _vm._v(" "), _c('h4', [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'user',
+          params: {
+            id: question.author.id
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(question.author.name))]), _vm._v(" published at " + _vm._s(question.created_at))], 1), _vm._v(" "), _c('p', {
       on: {
         "click": function($event) {
           _vm.handleClick(question.id)
         }
       }
-    }, [_c('h3', [_vm._v(_vm._s(question.title))]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(question.author.name) + " published at " + _vm._s(question.created_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(question.description))])])])], 1)
+    }, [_vm._v(_vm._s(question.description))])])])], 1)
   })), _vm._v(" "), _c('div', {
     staticClass: "pagination"
   }, [_c('el-pagination', {
@@ -67238,6 +67255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'question',
@@ -67317,7 +67335,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "question"
     }
-  }, [(_vm.question.id) ? _c('div', [_c('h3', [_vm._v(_vm._s(_vm.question.title))]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(_vm.question.author.name) + " published at " + _vm._s(_vm.question.created_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.question.description))]), _vm._v(" "), _c('el-card', {
+  }, [(_vm.question.id) ? _c('div', [_c('h3', [_vm._v(_vm._s(_vm.question.title))]), _vm._v(" "), _c('h4', [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'user',
+        params: {
+          id: _vm.question.author.id
+        }
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.question.author.name))]), _vm._v(" published at " + _vm._s(_vm.question.created_at))], 1), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.question.description))]), _vm._v(" "), (_vm.question.answers.length !== 0) ? _c('el-card', {
     staticClass: "box-card"
   }, _vm._l((_vm.question.answers), function(answer, index) {
     return _c('div', {
@@ -67325,8 +67352,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "text item"
     }, [_c('div', {
       staticClass: "answer"
-    }, [_c('h4', [_vm._v(_vm._s(answer.author.name) + " published at " + _vm._s(answer.updated_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(answer.content))])])])
-  }))], 1) : _c('div', [_c('h2', [_vm._v("no such question here!")])])])
+    }, [_c('h4', [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'user',
+          params: {
+            id: answer.author.id
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(answer.author.name))]), _vm._v(" published at " + _vm._s(answer.updated_at))], 1), _vm._v(" "), _c('p', [_vm._v(_vm._s(answer.content))])])])
+  })) : _c('p', [_vm._v("No answers yet!")])], 1) : _c('div', [_c('h2', [_vm._v("no such question here!")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -67334,6 +67370,221 @@ if (false) {
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-5cfa0128", module.exports)
   }
+}
+
+/***/ }),
+/* 128 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    name: 'user',
+    data: function data() {
+        return {
+            questions: [],
+            answers: [],
+            user: {}
+        };
+    },
+
+    methods: {
+        getQuestion: async function getQuestion() {
+            var id = this.$route.params.id;
+            if (!id) {
+                return;
+            }
+            var res = await axios.get('/api/userquestions/' + id);
+            if (res.data.status === 0) {
+                return;
+            }
+            this.questions = res.data;
+            console.log(res.data);
+        },
+        getAnswers: async function getAnswers() {
+            var id = this.$route.params.id;
+            if (!id) {
+                return;
+            }
+            var res = await axios.get('/api/useranswers/' + id);
+            if (res.data.status === 0) {
+                return;
+            }
+            this.answers = res.data;
+            console.log(res.data);
+        },
+        getUser: async function getUser() {
+            var id = this.$route.params.id;
+            if (!id) {
+                return;
+            }
+            var res = await axios.get('/api/user/' + id);
+            if (res.data.status === 0) {
+                return;
+            }
+            this.user = res.data;
+            console.log(res.data);
+        },
+        handleQuestionClick: function handleQuestionClick(id) {
+            if (!id) {
+                return;
+            }
+            this.$router.push({ name: 'question', params: { id: id } });
+        }
+    },
+    created: function created() {
+        this.getQuestion();
+        this.getAnswers();
+        this.getUser();
+    }
+};
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(132)
+
+var Component = __webpack_require__(10)(
+  /* script */
+  __webpack_require__(128),
+  /* template */
+  __webpack_require__(131),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/zcong/zcong/github/vue-qaq/resources/assets/js/components/User.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] User.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-74fb9b8d", Component.options)
+  } else {
+    hotAPI.reload("data-v-74fb9b8d", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "user"
+    }
+  }, [_c('h2', [_vm._v("User:")]), _vm._v(" "), _c('h3', [_vm._v("name: " + _vm._s(_vm.user.name))]), _vm._v(" "), (_vm.user.email) ? _c('h3', [_vm._v("email: " + _vm._s(_vm.user.email))]) : _vm._e(), _vm._v(" "), _c('h3', [_vm._v("joined at " + _vm._s(_vm.user.created_at))]), _vm._v(" "), _c('h2', [_vm._v("Questions:")]), _vm._v(" "), (_vm.questions.length !== 0) ? _c('el-card', {
+    staticClass: "box-card"
+  }, _vm._l((_vm.questions), function(question, index) {
+    return _c('div', {
+      key: 'question' + index,
+      staticClass: "text item"
+    }, [_c('div', {
+      staticClass: "question",
+      on: {
+        "click": function($event) {
+          _vm.handleQuestionClick(question.id)
+        }
+      }
+    }, [_c('h4', [_vm._v(_vm._s(question.title) + " published at " + _vm._s(question.updated_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(question.description))])])])
+  })) : _c('p', [_vm._v("No questions here!")]), _vm._v(" "), _c('h2', [_vm._v("Answers:")]), _vm._v(" "), (_vm.answers.length !== 0) ? _c('el-card', {
+    staticClass: "box-card"
+  }, _vm._l((_vm.answers), function(answer, index) {
+    return _c('div', {
+      key: 'answer' + index,
+      staticClass: "text item"
+    }, [_c('div', {
+      staticClass: "answer",
+      on: {
+        "click": function($event) {
+          _vm.handleQuestionClick(answer.question_id)
+        }
+      }
+    }, [_c('h4', [_vm._v("published at " + _vm._s(answer.updated_at))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(answer.content))])])])
+  })) : _c('p', [_vm._v("No answers here!")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-74fb9b8d", module.exports)
+  }
+}
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(129);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(19)("33e93b4c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-74fb9b8d!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-74fb9b8d!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./User.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
 }
 
 /***/ })

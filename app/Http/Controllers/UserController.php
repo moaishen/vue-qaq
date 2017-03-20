@@ -58,6 +58,12 @@ class UserController extends Controller
         return Utils::suc('logout success!');
     }
 
+    public function user($id)
+    {
+        $user = User::select(['id', 'name', 'email', 'created_at'])->find($id);
+        return $user;
+    }
+
     public function questions($id)
     {
         $user = User::find($id);

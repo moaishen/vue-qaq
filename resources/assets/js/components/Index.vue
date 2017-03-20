@@ -3,10 +3,10 @@
         <div class="content">
             <el-row type="flex" justify="center" v-for="(question, index) in questions" :key="index">
                 <el-col :span="20">
-                    <div class="question" @click="handleClick(question.id)">
+                    <div class="question">
                         <h3>{{ question.title }}</h3>
-                        <h4>{{ question.author.name }} published at {{ question.created_at }}</h4>
-                        <p>{{ question.description }}</p>
+                        <h4><router-link :to="{ name: 'user', params: { id: question.author.id } }">{{ question.author.name }}</router-link> published at {{ question.created_at }}</h4>
+                        <p @click="handleClick(question.id)">{{ question.description }}</p>
                     </div>
                 </el-col>
             </el-row>

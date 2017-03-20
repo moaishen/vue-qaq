@@ -7,6 +7,7 @@ import Example from '../components/Example.vue'
 import Index from '../components/Index.vue'
 import Login from '../components/Login.vue'
 import Question from '../components/Question.vue'
+import User from '../components/User.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ export default new VueRouter({
             path: '/question/:id',
             name: 'question',
             component: Question
+        },
+        {
+            path: '/user/:id',
+            name: 'user',
+            component: User
         }
     ]
 })

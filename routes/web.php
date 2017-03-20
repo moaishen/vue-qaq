@@ -25,13 +25,14 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/useranswers/{id}', ['uses' => 'UserController@answers']);
     Route::get('/questions', ['uses' => 'QuestionController@getQuestions']);
     Route::get('/question/{id}', ['uses' => 'QuestionController@getById']);
+    Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
+    Route::get('/user/{id}', ['uses' => 'UserController@user']);
 });
 
 Route::group(['prefix' => 'api', 'middleware' => Login::class], function () {
     Route::get('/test', function () {
         dd(config('website.questions.limit'));
     });
-    Route::get('/userquestions/{id}', ['uses' => 'UserController@questions']);
     Route::post('/question', ['uses' => 'QuestionController@add']);
 });
 

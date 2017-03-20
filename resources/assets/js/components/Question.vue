@@ -2,16 +2,17 @@
     <div id="question">
         <div v-if="question.id">
             <h3>{{ question.title }}</h3>
-            <h4>{{ question.author.name }} published at {{ question.created_at }}</h4>
+            <h4><router-link :to="{ name: 'user', params: { id: question.author.id } }">{{ question.author.name }}</router-link> published at {{ question.created_at }}</h4>
             <p>{{ question.description }}</p>
-            <el-card class="box-card">
+            <el-card class="box-card" v-if="question.answers.length !== 0">
                 <div v-for="(answer, index) in question.answers" class="text item" :key="'answer' + index">
                     <div class="answer">
-                        <h4>{{ answer.author.name }} published at {{ answer.updated_at }}</h4>
+                        <h4><router-link :to="{ name: 'user', params: { id: answer.author.id } }">{{ answer.author.name }}</router-link> published at {{ answer.updated_at }}</h4>
                         <p>{{ answer.content }}</p>
                     </div>
                 </div>
             </el-card>
+            <p v-else>No answers yet!</p>
         </div>
         <div v-else>
             <h2>no such question here!</h2>
