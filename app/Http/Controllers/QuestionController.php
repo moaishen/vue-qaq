@@ -6,6 +6,7 @@ use App\Utils\Utils;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use App\User;
 use Validator;
 
 class QuestionController extends Controller
@@ -27,11 +28,11 @@ class QuestionController extends Controller
     public function getById($id)
     {
         $question = Question::with('author')->find($id);
-        $question->answers = Answer::where('question_id', $id)->with('author')->orderBy('updated_at', 'desc')->get();
-        if ($question) {
-            return $question;
+        if (!$question) {
+            return Utils::err('no such question here!');
         }
-        return Utils::err('no such question here!');
+        $question->answers = Answer::where('question_id', $id)->with('author')->orderBy('updated_at', 'desc')->get();
+        return $question;
     }
 
     public function add(Request $request)

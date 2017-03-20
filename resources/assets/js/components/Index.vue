@@ -3,9 +3,11 @@
         <div class="content">
             <el-row type="flex" justify="center" v-for="(question, index) in questions" :key="index">
                 <el-col :span="20">
-                    <h3>{{ question.title }}</h3>
-                    <h4>{{ question.author.name }} published at {{ question.created_at }}</h4>
-                    <p>{{ question.description }}</p>
+                    <div class="question" @click="handleClick(question.id)">
+                        <h3>{{ question.title }}</h3>
+                        <h4>{{ question.author.name }} published at {{ question.created_at }}</h4>
+                        <p>{{ question.description }}</p>
+                    </div>
                 </el-col>
             </el-row>
         </div>
@@ -50,6 +52,12 @@
             },
             handleCurrentChange (val) {
                 this.getData(val)
+            },
+            handleClick (id) {
+                if (!id) {
+                    return
+                }
+                this.$router.push({name: 'question', params: { id }})
             }
         },
         created () {
@@ -71,5 +79,10 @@
         position: relative;
         bottom: 0;
         text-align: center;
+    }
+    .question {
+        background-color: #eee;
+        border-radius: 6px;
+        padding-left: 2px;
     }
 </style>
